@@ -1,0 +1,44 @@
+<evaluation>
+   <qa_pair>
+      <question>On Ganjoor, Hafez's ghazal number 494 (URL /hafez/ghazal/sh494) borrows a couplet from an earlier poem by another poet. Using the quotation records for that ghazal, name the poet whose poem is quoted. Answer with the poet's name exactly as Ganjoor spells it.</question>
+      <answer>فیض کاشانی</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Find the prosodic metre that the largest number of poems on Ganjoor are written in — call it the most-used metre. Then find Hafez's ghazal number 494 at URL /hafez/ghazal/sh494 and report its metre. Is the ghazal written in that most-used metre? Answer True or False, then on a second line give the verse count of ghazal 494 as an integer.</question>
+      <answer>False
+8</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Among the poets Ganjoor lists who have a birth year in the Hijri range 380 to 399 inclusive, find the one with the earliest death year. Report that poet's name exactly as Ganjoor spells it.</question>
+      <answer>فرخی سیستانی</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Ganjoor has a related-people knowledge graph separate from its list of poets. Starting from the person whose name is کیومرث (the Pishdadian dynasty figure), walk the kinship graph and count how many distinct people are in the connected component that contains him. Give the count as an integer.</question>
+      <answer>56</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Count how many separate audio recitations Ganjoor has published for Hafez's ghazal number 494 at URL /hafez/ghazal/sh494. Give the count as an integer.</question>
+      <answer>14</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>On Ganjoor, Hafez's ghazals are collected under one category and Khayyam's rubaiyat under another. Compare them: how many ghazals does Ganjoor list for Hafez, and how many rubaiyat does it list for Khayyam? Give both counts as "Hafez,Khayyam" with no spaces.</question>
+      <answer>495,178</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Search Ganjoor's editorial FAQ for the entry that explains why poems by Khayyam are credited to Abu Sa'id Abu'l-Khayr and why some poems appear under several different poets. Which FAQ category is that entry filed under? Report the category's Persian title exactly as Ganjoor writes it.</question>
+      <answer>متن اشعار و موارد عمومی</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Consider Rumi's Masnavi, which Ganjoor splits into six dafters. Work down to the first dafter (the one titled دفتر اول). How many separate poem entries does Ganjoor list inside that first dafter? Give the count as an integer.</question>
+      <answer>172</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Look at the poem at Ganjoor page id 13836. Report its full title exactly as Ganjoor writes it, using the » separator between the poet name and the book name.</question>
+      <answer>رودکی » قصاید و قطعات » شمارهٔ ۲</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Using Ganjoor's rhyme analysis for Hafez's ghazal number 494 at URL /hafez/ghazal/sh494, report the detected rhyme string exactly as the API returns it. Then, independently, state the first verse (hemi-stich) of that ghazal exactly as Ganjoor prints it, including its diacritics. Put the rhyme on the first line and the first verse on the second line.</question>
+      <answer>انبهدرایی
+اِی دِل! گَر از آن چاهِ زَنَخْدان به دَرآیی</answer>
+   </qa_pair>
+</evaluation>
