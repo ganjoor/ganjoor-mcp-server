@@ -1,0 +1,48 @@
+{
+  "name": "ganjoor-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for the Ganjoor (گنجور) Persian classical poetry API at https://ganjoor.net",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "ganjoor-mcp-server": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('dist/index.js', 0o755)\"",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "start:http": "HTTP=true node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx tests/smoke.test.ts",
+    "inspect": "tsx tests/inspect-output.ts",
+    "inspector": "npx @modelcontextprotocol/inspector node dist/index.js",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "mcp",
+    "modelcontextprotocol",
+    "ganjoor",
+    "persian",
+    "poetry",
+    "farsi"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.17"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "express": "^5.1.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}
