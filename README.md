@@ -14,7 +14,7 @@ It lets an agent browse poets and collections, read poems with their verses, run
 analysis, trace reply-poems across poets, look up recitations and commentary, and explore the
 related-people and family-tree graphs.
 
-**44 tools. No API key required.**
+**44 tools, read-only access. No API key required.**
 
 ---
 
