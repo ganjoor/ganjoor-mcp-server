@@ -1,4 +1,4 @@
-# CLAUDE.md
+# AGENTS.md
 
 This file provides guidance for using the `ganjoor-mcp-server` with Claude, an AI assistant. It explains how to set up the server, interact with it, and understand its architecture and data model.
 
