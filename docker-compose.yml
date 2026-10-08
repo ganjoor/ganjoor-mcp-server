@@ -1,0 +1,32 @@
+services:
+  ganjoor-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ganjoor-mcp
+    # HTTP transport — the sensible mode for a long-running container.
+    # HOST must be 0.0.0.0 so the published port is reachable from the host.
+    environment:
+      HTTP: "true"
+      PORT: "3000"
+      HOST: 0.0.0.0
+      # Extra allowed Origin values, comma-separated (loopback is always allowed).
+      ALLOWED_ORIGINS: ""
+      # Point at a local RMuseum instance during development.
+      # GANJOOR_API_BASE_URL: https://api.ganjoor.net
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  # Interactive stdio transport, for MCP clients that launch the server themselves.
+  # Not started by `docker compose up` — run it with:
+  #   docker compose run --rm ganjoor-mcp-stdio
+  ganjoor-mcp-stdio:
+    profiles: ["stdio"]
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      HTTP: "false"
+    stdin_open: true
+    tty: false

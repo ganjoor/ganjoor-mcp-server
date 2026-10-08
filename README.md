@@ -27,6 +27,7 @@ related-people and family-tree graphs.
 ## Contents
 
 - [Install](#install)
+- [Docker](#docker)
 - [Configuration](#configuration)
 - [Concepts](#concepts)
 - [Tool reference](#tool-reference)
@@ -95,6 +96,51 @@ transport runs statelessly (a fresh server instance per request), so it scales h
 
 ```bash
 npm run inspector
+```
+
+---
+
+## Docker
+
+A multi-stage `Dockerfile` and a `docker-compose.yml` are included. The image is built on
+`node:22-alpine` and contains only the compiled output and production dependencies.
+
+```bash
+docker compose up --build
+```
+
+The compose file starts the server in **streamable HTTP mode** on `http://localhost:3000/mcp`, with
+`GET /health` reporting server and upstream status. `HOST` is set to `0.0.0.0` so the published port
+is reachable from the host; every configuration variable from the table below works as an ordinary
+environment variable. To run a single container without compose:
+
+```bash
+docker build -t ganjoor-mcp .
+docker run --rm -p 3000:3000 -e HTTP=true -e HOST=0.0.0.0 ganjoor-mcp
+```
+
+### stdio transport over Docker
+
+Clients that launch the server themselves (rather than connecting over HTTP) can use the `stdio`
+profile, which opens stdin for the protocol stream and starts no HTTP listener:
+
+```bash
+docker compose --profile stdio run --rm ganjoor-mcp-stdio
+```
+
+### With Claude Desktop
+
+To run the server through Docker instead of a local Node install:
+
+```json
+{
+  "mcpServers": {
+    "ganjoor": {
+      "command": "docker",
+      "args": ["run", "--rm", "-i", "ganjoor-mcp"]
+    }
+  }
+}
 ```
 
 ---
