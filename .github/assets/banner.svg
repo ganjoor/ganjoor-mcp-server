@@ -1,0 +1,68 @@
+<svg width="1200" height="300" viewBox="0 0 1200 300" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GANJOOR MCP SERVER: MCP server for the Ganjoor (گنجور) Persian classical poetry API">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#071B12"/>
+      <stop offset="0.45" stop-color="#0E3122"/>
+      <stop offset="1" stop-color="#0A2418"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#46C088"/>
+      <stop offset="1" stop-color="#E2C079"/>
+    </linearGradient>
+    <radialGradient id="orbAccent" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#46C088" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#46C088" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orbAlt" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#E2C079" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#E2C079" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orbSoft" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#8FB89E" stop-opacity="0.13"/>
+      <stop offset="1" stop-color="#8FB89E" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#96C8AA" stroke-opacity="0.06" stroke-width="1"/>
+    </pattern>
+    <clipPath id="round"><rect width="1200" height="300" rx="10"/></clipPath>
+    <mask id="waveEdge">
+      <path d="M -1200 -20 L -1200 250 Q -1050 234 -900 250 T -600 250 T -300 250 T 0 250 T 300 250 T 600 250 T 900 250 T 1200 250 T 1500 250 T 1800 250 T 2100 250 T 2400 250 L 2400 -20 Z" fill="#ffffff">
+        <animateTransform attributeName="transform" type="translate" values="-1200 0; 0 0" dur="22s" repeatCount="indefinite"/>
+      </path>
+    </mask>
+  </defs>
+
+  <g clip-path="url(#round)" mask="url(#waveEdge)">
+    <rect width="1200" height="300" fill="url(#bg)"/>
+
+    <g>
+      <circle cx="170" cy="90" r="180" fill="url(#orbAccent)">
+        <animateTransform attributeName="transform" type="translate" values="0 0; 60 34; 0 0" dur="26s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="1040" cy="230" r="210" fill="url(#orbSoft)">
+        <animateTransform attributeName="transform" type="translate" values="0 0; -70 -30; 0 0" dur="32s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="960" cy="40" r="150" fill="url(#orbAlt)">
+        <animateTransform attributeName="transform" type="translate" values="0 0; -40 44; 0 0" dur="21s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="380" cy="290" r="160" fill="url(#orbAlt)" opacity="0.6">
+        <animateTransform attributeName="transform" type="translate" values="0 0; 50 -26; 0 0" dur="29s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+
+    <rect width="1200" height="300" fill="url(#grid)"/>
+
+    <path d="M -1200 300 L -1200 240 Q -1100 226 -1000 240 T -800 240 T -600 240 T -400 240 T -200 240 T 0 240 T 200 240 T 400 240 T 600 240 T 800 240 T 1000 240 T 1200 240 T 1400 240 T 1600 240 T 1800 240 T 2000 240 T 2200 240 T 2400 240 L 2400 300 Z" fill="#041209" fill-opacity="0.5">
+      <animateTransform attributeName="transform" type="translate" values="0 0; -1200 0" dur="14s" repeatCount="indefinite"/>
+    </path>
+    <path d="M -1200 300 L -1200 258 L -1050 258 Q -900 240 -750 258 T -450 258 T -150 258 T 150 258 T 450 258 T 750 258 T 1050 258 T 1350 258 T 1650 258 T 1950 258 T 2250 258 T 2550 258 L 2400 300 Z" fill="#030D07" fill-opacity="0.55">
+      <animateTransform attributeName="transform" type="translate" values="-1200 0; 0 0" dur="18s" repeatCount="indefinite"/>
+    </path>
+
+    <g font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" text-anchor="middle">
+      <text x="600" y="152" font-size="74" font-weight="800" letter-spacing="10" fill="#EAF0EA">GANJOOR MCP SERVER</text>
+      <rect x="102" y="170" width="996" height="7" rx="3.5" fill="url(#accent)"/>
+      <text x="600" y="210" font-size="15" font-weight="600" letter-spacing="6" fill="#E2C079">MCP SERVER FOR THE GANJOOR (گنجور) PERSIAN CLASSICAL POETRY API</text>
+    </g>
+  </g>
+</svg>

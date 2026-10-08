@@ -1,0 +1,19 @@
+name: acceptance
+# merge_group keeps a merge queue from deadlocking the moment this check is made required:
+# a queued PR waits on checks fired by the queue's own event, which push/pull_request never emit.
+on: [push, pull_request, merge_group]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # Pinned to a full commit SHA, never a movable tag: this workflow is the enforcement gate,
+      # and a re-pointed tag is a supply-chain hole in the one file that gates everything else
+      # (OpenSSF Scorecard: Pinned-Dependencies). The trailing comment names the tag for humans;
+      # refresh the SHA deliberately, on toolkit releases.
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+      # No setup-node on purpose: the lint and suite are Node built-ins only (Node 18+ floor),
+      # and every ubuntu-latest image ships a newer Node on PATH, so that is one less third-party action
+      # inside the gate.
+      - run: for t in acceptance/test-*.mjs; do node "$t" || exit 1; done

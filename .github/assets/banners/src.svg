@@ -1,0 +1,53 @@
+<svg width="1200" height="150" viewBox="0 0 1200 150" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="src/: Process entry, fetch client, types, format, and schemas">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#071B12"/>
+      <stop offset="0.45" stop-color="#0E3122"/>
+      <stop offset="1" stop-color="#0A2418"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#46C088"/>
+      <stop offset="1" stop-color="#E2C079"/>
+    </linearGradient>
+    <radialGradient id="orbAccent" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#46C088" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#46C088" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orbAlt" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#E2C079" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#E2C079" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orbSoft" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#8FB89E" stop-opacity="0.13"/>
+      <stop offset="1" stop-color="#8FB89E" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#96C8AA" stroke-opacity="0.06" stroke-width="1"/>
+    </pattern>
+    <clipPath id="round"><rect width="1200" height="150" rx="10"/></clipPath>
+    <mask id="waveEdge">
+      <path d="M -1200 -20 L -1200 126 Q -1050 117 -900 126 T -600 126 T -300 126 T 0 126 T 300 126 T 600 126 T 900 126 T 1200 126 T 1500 126 T 1800 126 T 2100 126 T 2400 126 L 2400 -20 Z" fill="#ffffff">
+        <animateTransform attributeName="transform" type="translate" values="-1200 0; 0 0" dur="20s" repeatCount="indefinite"/>
+      </path>
+    </mask>
+  </defs>
+  <g clip-path="url(#round)" mask="url(#waveEdge)">
+    <rect width="1200" height="150" fill="url(#bg)"/>
+    <circle cx="180" cy="40" r="150" fill="url(#orbAccent)">
+      <animateTransform attributeName="transform" type="translate" values="0 0; 50 20; 0 0" dur="24s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1020" cy="120" r="170" fill="url(#orbAlt)">
+      <animateTransform attributeName="transform" type="translate" values="0 0; -60 -18; 0 0" dur="30s" repeatCount="indefinite"/>
+    </circle>
+    <rect width="1200" height="150" fill="url(#grid)"/>
+    <path d="M -1200 150 L -1200 120 Q -1100 112 -1000 120 T -800 120 T -600 120 T -400 120 T -200 120 T 0 120 T 200 120 T 400 120 T 600 120 T 800 120 T 1000 120 T 1200 120 T 1400 120 T 1600 120 T 1800 120 T 2000 120 T 2200 120 T 2400 120 L 2400 150 Z" fill="#041209" fill-opacity="0.5">
+      <animateTransform attributeName="transform" type="translate" values="0 0; -1200 0" dur="13s" repeatCount="indefinite"/>
+    </path>
+    <text x="28" y="28" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" letter-spacing="3" fill="#E2C079">GANJOOR · MCP SERVER</text>
+    <g text-anchor="middle">
+      <text x="600" y="72" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="46" font-weight="700" fill="#EAF0EA">src/</text>
+      <rect x="543" y="84" width="114" height="5" rx="2.5" fill="url(#accent)"/>
+      <text x="600" y="104" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" letter-spacing="5" fill="#9DB3A4">PROCESS ENTRY, FETCH CLIENT, TYPES, FORMAT, AND SCHEMAS</text>
+    </g>
+  </g>
+</svg>

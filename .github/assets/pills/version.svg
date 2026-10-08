@@ -1,0 +1,9 @@
+<svg width="122" height="26" viewBox="0 0 122 26" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="VERSION: 0.1.0">
+  <clipPath id="r"><rect width="122" height="26" rx="4"/></clipPath>
+  <g clip-path="url(#r)" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="0.5">
+    <rect width="68" height="26" fill="#0A2418"/>
+    <rect x="68" width="54" height="26" fill="#1F6E47"/>
+    <text x="34" y="17.5" fill="#9DB3A4">VERSION</text>
+    <text x="95" y="17.5" fill="#FFFFFF">0.1.0</text>
+  </g>
+</svg>

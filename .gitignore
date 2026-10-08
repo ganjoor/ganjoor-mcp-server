@@ -1,5 +1,9 @@
 node_modules/
 dist/
 *.log
-.env
 .DS_Store
+
+# Secrets ruleset (repo-standard-toolkit)
+.env
+.env.*
+!.env.example

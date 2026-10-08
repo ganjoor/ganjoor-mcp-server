@@ -1,8 +1,14 @@
-# Ganjoor MCP Server
+# [![GANJOOR MCP SERVER: MCP server for the Ganjoor (گنجور) Persian classical poetry API](.github/assets/banner.svg)](https://github.com/ganjoor)
 
-An [MCP](https://modelcontextprotocol.io) server for **[Ganjoor](https://ganjoor.net)** — the largest
-public archive of Persian classical poetry — exposing the read-only public API at
-[`api.ganjoor.net`](https://api.ganjoor.net/index.html) to AI agents.
+<div align="center">
+
+[![VERSION: 0.1.0](.github/assets/pills/version.svg)](CHANGELOG.md)
+[![PLATFORM: Node >=18.17](.github/assets/pills/platform.svg)](package.json)
+[![LICENSE: MIT](.github/assets/pills/license.svg)](LICENSE)
+
+</div>
+
+**Ganjoor MCP Server** — the Model Context Protocol server for the Ganjoor Persian poetry API.
 
 It lets an agent browse poets and collections, read poems with their verses, run prosody and rhyme
 analysis, trace reply-poems across poets, look up recitations and commentary, and explore the
@@ -14,19 +20,20 @@ related-people and family-tree graphs.
 
 ## Contents
 
-- [Quick start](#quick-start)
+- [Install](#install)
 - [Configuration](#configuration)
 - [Concepts](#concepts)
 - [Tool reference](#tool-reference)
 - [Response formats](#response-formats)
-- [Examples](#examples)
+- [Usage](#usage)
 - [Architecture](#architecture)
 - [Development](#development)
 - [Known limitations](#known-limitations)
+- [Contributing](#contributing)
 
 ---
 
-## Quick start
+## Install
 
 Requires Node.js 18.17 or newer.
 
@@ -254,7 +261,7 @@ suggests a next step — for example, a 404 points you at `ganjoor_list_poets` t
 
 ---
 
-## Examples
+## Usage
 
 **"Who is Hafez?"**
 
@@ -382,6 +389,12 @@ npx tsx tests/verify-evaluation.ts   # replays every question through the MCP to
 The questions deliberately avoid single-lookup trivia. They cross-reference poets against centuries,
 walk the kinship graph, compare the prosody of a poem against the corpus-wide metre list, and resolve
 a reply-poem chain through quotation records.
+
+---
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ---
 
