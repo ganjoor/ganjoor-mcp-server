@@ -8,6 +8,12 @@
 
 </div>
 
+<div align="center">
+
+**English** | [فارسی](README.fa.md)
+
+</div>
+
 **Ganjoor MCP Server** — the Model Context Protocol server for the Ganjoor Persian poetry API.
 
 It lets an agent browse poets and collections, read poems with their verses, run prosody and rhyme
