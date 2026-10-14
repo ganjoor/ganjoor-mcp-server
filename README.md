@@ -5,6 +5,7 @@
 [![VERSION: 0.1.0](.github/assets/pills/version.svg)](CHANGELOG.md)
 [![PLATFORM: Node >=18.17](.github/assets/pills/platform.svg)](package.json)
 [![LICENSE: MIT](.github/assets/pills/license.svg)](LICENSE)
+[![M8ven Score](https://m8ven.ai/badge/mcp/ganjoor-ganjoor-mcp-server-1lai32?v=34eab6a473e89619b24e314a7bf5bee6)](https://m8ven.ai/mcp/ganjoor-ganjoor-mcp-server-1lai32?s=readme)
 
 </div>
 
