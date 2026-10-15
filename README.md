@@ -63,7 +63,7 @@ Or add to `.vscode/mcp.json`:
 ```json
 {
   "servers": {
-    "io.github.ehsanghaffar/ganjoor-mcp-server": {
+    "ganjoor-mcp-server": {
       "command": "npx",
       "args": [
         "-y",
@@ -92,7 +92,7 @@ Or add to your MCP config file:
 ```json
 {
   "mcpServers": {
-    "io.github.ehsanghaffar/ganjoor-mcp-server": {
+    "ganjoor-mcp-server": {
       "command": "npx",
       "args": [
         "-y",
@@ -132,7 +132,7 @@ Follow the MCP install [guide](https://modelcontextprotocol.io/quickstart/user),
 Create or edit the configuration file `~/.codex/config.toml` and add:
 
 ```toml
-[mcp_servers.io.github.ehsanghaffar/ganjoor-mcp-server]
+[mcp_servers.ganjoor-mcp-server]
 command = "npx"
 args = ["-y", "ganjoor-mcp-server"]
 ```
@@ -155,7 +155,7 @@ Follow the MCP Servers [documentation](https://opencode.ai/docs/mcp-servers/). F
 {
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
-    "io.github.ehsanghaffar/ganjoor-mcp-server": {
+    "ganjoor-mcp-server": {
       "type": "local",
       "command": [
         "npx",
@@ -190,7 +190,7 @@ GitHub Copilot CLI supports adding MCP servers interactively and through a confi
 ```json
 {
   "mcpServers": {
-    "io.github.ehsanghaffar/ganjoor-mcp-server": {
+    "ganjoor-mcp-server": {
       "command": "npx",
       "args": [
         "-y",
@@ -217,7 +217,7 @@ GitHub Copilot Coding Agent can use MCP servers to extend its capabilities. Use 
 ```json
 {
   "mcpServers": {
-    "io.github.ehsanghaffar/ganjoor-mcp-server": {
+    "ganjoor-mcp-server": {
       "command": "npx",
       "args": [
         "-y",

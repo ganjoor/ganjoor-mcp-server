@@ -60,7 +60,7 @@ npm install ganjoor-mcp-server
 ```json
 {
   "servers": {
-    "io.github.ehsanghaffar/ganjoor-mcp-server": {
+    "ganjoor-mcp-server": {
       "command": "npx",
       "args": [
         "-y",
@@ -75,7 +75,7 @@ npm install ganjoor-mcp-server
 با CLI خود VS Code:
 
 ```bash
-code --add-mcp '{\"name\":\"io.github.ehsanghaffar/ganjoor-mcp-server\",\"command\":\"npx\",\"args\":[\"-y\",\"ganjoor-mcp-server\"],\"env\":{}}'
+code --add-mcp '{\"name\":\"ganjoor-mcp-server\",\"command\":\"npx\",\"args\":[\"-y\",\"ganjoor-mcp-server\"],\"env\":{}}'
 ```
 
 ### Claude Desktop / Cursor
@@ -90,7 +90,7 @@ code --add-mcp '{\"name\":\"io.github.ehsanghaffar/ganjoor-mcp-server\",\"comman
 ```json
 {
   "mcpServers": {
-    "io.github.ehsanghaffar/ganjoor-mcp-server": {
+    "ganjoor-mcp-server": {
       "command": "npx",
       "args": [
         "-y",
@@ -115,7 +115,7 @@ code --add-mcp '{\"name\":\"io.github.ehsanghaffar/ganjoor-mcp-server\",\"comman
 استفاده کنید:
 
 ```bash
-claude mcp add io.github.ehsanghaffar/ganjoor-mcp-server npx -y ganjoor-mcp-server
+claude mcp add ganjoor-mcp-server npx -y ganjoor-mcp-server
 ```
 </details>
 
@@ -157,7 +157,7 @@ args = ["-y", "ganjoor-mcp-server"]
 {
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
-    "io.github.ehsanghaffar/ganjoor-mcp-server": {
+    "ganjoor-mcp-server": {
       "type": "local",
       "command": [
         "npx",
@@ -192,7 +192,7 @@ GitHub Copilot CLI هم از راه تعاملی و هم از راه فایل پ
 ```json
 {
   "mcpServers": {
-    "io.github.ehsanghaffar/ganjoor-mcp-server": {
+    "ganjoor-mcp-server": {
       "command": "npx",
       "args": [
         "-y",
@@ -220,7 +220,7 @@ GitHub Copilot CLI هم از راه تعاملی و هم از راه فایل پ
 ```json
 {
   "mcpServers": {
-    "io.github.ehsanghaffar/ganjoor-mcp-server": {
+    "ganjoor-mcp-server": {
       "command": "npx",
       "args": [
         "-y",
