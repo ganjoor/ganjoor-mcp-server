@@ -17,3 +17,14 @@ releases, so unreleased work stays under `[Unreleased]` until the first tag is c
 ### Added
 
 - Initial scaffold: repo-standard toolkit governance, LICENSE, CONTRIBUTING, CODE_OF_CONDUCT, SECURITY, CONVENTIONS, CHANGELOG
+- Initial implementation of the Ganjoor MCP Server
+- Basic API endpoints for handling MCP requests
+- Documentation for the server and its usage
+
+## [0.1.0] - 2026-10-15
+
+### Added
+
+- Added to the official MCP registry for public access
+- Added to the official MCP registry for public access
+- Documentation for the server and its usage with new registry features
