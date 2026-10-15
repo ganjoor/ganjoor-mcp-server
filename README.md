@@ -2,10 +2,10 @@
 
 <div align="center">
 
-[![VERSION: 0.1.0](.github/assets/pills/version.svg)](CHANGELOG.md)
+[![VERSION: 0.1.0](.github/assets/pills/version.svg)]([CHANGELOG.md](https://www.npmjs.com/package/ganjoor-mcp-server))
 [![PLATFORM: Node >=18.17](.github/assets/pills/platform.svg)](package.json)
 [![LICENSE: MIT](.github/assets/pills/license.svg)](LICENSE)
-[![M8ven Score](https://m8ven.ai/badge/mcp/ganjoor-ganjoor-mcp-server-1lai32?v=34eab6a473e89619b24e314a7bf5bee6)](https://m8ven.ai/mcp/ganjoor-ganjoor-mcp-server-1lai32?s=readme)
+
 
 </div>
 
@@ -37,6 +37,7 @@ related-people and family-tree graphs.
 - [Architecture](#architecture)
 - [Development](#development)
 - [Known limitations](#known-limitations)
+- [Evaluation](#evaluation)
 - [Contributing](#contributing)
 
 ---
@@ -46,12 +47,206 @@ related-people and family-tree graphs.
 Requires Node.js 18.17 or newer.
 
 ```bash
+npm install ganjoor-mcp-server
+```
+
+### VS Code
+
+Just click the badge below to install the Ganjoor MCP server in your VS Code workspace. It will
+  automatically add the server to your `.vscode/mcp.json` config.
+
+[![Install in VS Code](https://img.shields.io/badge/Install_in-VS_Code-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=io.github.ehsanghaffar%2Fganjoor-mcp-server&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22ganjoor-mcp-server%22%5D%2C%22env%22%3A%7B%7D%7D)
+
+
+Or add to `.vscode/mcp.json`:
+
+```json
+{
+  "servers": {
+    "io.github.ehsanghaffar/ganjoor-mcp-server": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "ganjoor-mcp-server"
+      ],
+      "env": {}
+    }
+  }
+}
+```
+
+VS Code CLI:
+
+```bash
+code --add-mcp '{\"name\":\"io.github.ehsanghaffar/ganjoor-mcp-server\",\"command\":\"npx\",\"args\":[\"-y\",\"ganjoor-mcp-server\"],\"env\":{}}'
+```
+
+### Claude Desktop / Cursor
+
+Just click the badge below to install the Ganjoor MCP server in your Claude Desktop or Cursor app. It will automatically add the server to your MCP config.
+
+[![Install in Cursor](https://img.shields.io/badge/Install_in-Cursor-000000?style=flat-square&logoColor=white)](https://cursor.com/en/install-mcp?name=io.github.ehsanghaffar%2Fganjoor-mcp-server&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsImdhbmpvb3ItbWNwLXNlcnZlciJdLCJlbnYiOnt9fQ==)
+
+Or add to your MCP config file:
+
+```json
+{
+  "mcpServers": {
+    "io.github.ehsanghaffar/ganjoor-mcp-server": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "ganjoor-mcp-server"
+      ],
+      "env": {},
+      "type": "local",
+      "tools": [
+        "*"
+      ]
+    }
+  }
+}
+```
+
+### Other clients
+
+<details>
+<summary>Claude Code</summary>
+
+Use the Claude Code CLI to add the io.github.ehsanghaffar/ganjoor-mcp-server MCP server:
+
+```bash
+claude mcp add io.github.ehsanghaffar/ganjoor-mcp-server npx -y ganjoor-mcp-server
+```
+</details>
+
+<details>
+<summary>Claude Desktop</summary>
+
+Follow the MCP install [guide](https://modelcontextprotocol.io/quickstart/user), use the standard config above.
+</details>
+
+<details>
+<summary>Codex</summary>
+
+Create or edit the configuration file `~/.codex/config.toml` and add:
+
+```toml
+[mcp_servers.io.github.ehsanghaffar/ganjoor-mcp-server]
+command = "npx"
+args = ["-y", "ganjoor-mcp-server"]
+```
+
+For more information, see the [Codex MCP documentation](https://github.com/openai/codex/blob/main/codex-rs/config.md#mcp_servers).
+</details>
+
+<details>
+<summary>Gemini CLI</summary>
+
+Follow the MCP install [guide](https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md#configure-the-mcp-server-in-settingsjson), use the standard config above.
+</details>
+
+<details>
+<summary>OpenCode</summary>
+
+Follow the MCP Servers [documentation](https://opencode.ai/docs/mcp-servers/). For example in `~/.config/opencode/opencode.json`:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "io.github.ehsanghaffar/ganjoor-mcp-server": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "ganjoor-mcp-server"
+      ],
+      "enabled": true
+    }
+  }
+}
+```
+</details>
+
+<details>
+<summary>GitHub Copilot CLI</summary>
+
+GitHub Copilot CLI supports adding MCP servers interactively and through a config file.
+
+#### Option 1: Interactive setup with `/mcp add`
+
+1. Open GitHub Copilot CLI in interactive mode.
+2. Run `/mcp add`.
+3. Enter **Server Name**: `io.github.ehsanghaffar/ganjoor-mcp-server`.
+4. Choose **Server Type**:
+   - `STDIO` for command-based servers
+   - `HTTP` for remote servers
+5. Fill in command/url settings from the standard config above and set **Tools** to `*`.
+6. Press `Ctrl+S` to save.
+
+#### Option 2: Edit `~/.copilot/mcp-config.json`
+
+```json
+{
+  "mcpServers": {
+    "io.github.ehsanghaffar/ganjoor-mcp-server": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "ganjoor-mcp-server"
+      ],
+      "env": {},
+      "type": "local",
+      "tools": [
+        "*"
+      ]
+    }
+  }
+}
+```
+
+For more information, see the [GitHub Copilot CLI MCP documentation](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-mcp-servers).
+</details>
+
+<details>
+<summary>GitHub Copilot Coding Agent</summary>
+
+GitHub Copilot Coding Agent can use MCP servers to extend its capabilities. Use the configuration below specifically formatted for the Coding Agent:
+
+```json
+{
+  "mcpServers": {
+    "io.github.ehsanghaffar/ganjoor-mcp-server": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "ganjoor-mcp-server"
+      ],
+      "env": {},
+      "type": "local",
+      "tools": [
+        "*"
+      ]
+    }
+  }
+}
+```
+
+Add this configuration to your repository settings under **Copilot > Coding agent**. The `"tools": ["*"]` setting enables all available tools from the MCP server.
+
+For more information, see the [GitHub Copilot Coding Agent MCP documentation](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/extend-coding-agent-with-mcp).
+</details>
+
+### Install from this source
+
+```bash
 npm install
 npm run build
 npm start            # stdio transport (default)
 ```
 
-### VS Code
+#### VS Code
 
 Add to `.vscode/mcp.json`:
 
@@ -67,7 +262,7 @@ Add to `.vscode/mcp.json`:
 }
 ```
 
-### Claude Desktop / Cursor
+#### Claude Desktop / Cursor
 
 Add to your MCP config file:
 
@@ -448,12 +643,3 @@ a reply-poem chain through quotation records.
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
-
----
-
-## License
-
-MIT
-
-Poem texts and commentary on Ganjoor are curated by its volunteer editors; consult
-[ganjoor.net](https://ganjoor.net) for their terms.

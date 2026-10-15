@@ -1,16 +1,17 @@
-<div align="right">
-
-**فارسی** | [English](README.md)
-
-</div>
-
 # [![GANJOOR MCP SERVER: MCP server for the Ganjoor (گنجور) Persian classical poetry API](.github/assets/banner.svg)](https://github.com/ganjoor)
 
 <div align="center">
 
-[![VERSION: 0.1.0](.github/assets/pills/version.svg)](CHANGELOG.md)
+[![VERSION: 0.1.0](.github/assets/pills/version.svg)]([CHANGELOG.md](https://www.npmjs.com/package/ganjoor-mcp-server))
 [![PLATFORM: Node >=18.17](.github/assets/pills/platform.svg)](package.json)
 [![LICENSE: MIT](.github/assets/pills/license.svg)](LICENSE)
+
+
+</div>
+
+<div align="right">
+
+**فارسی** | [English](README.md)
 
 </div>
 
@@ -25,6 +26,7 @@
 ## فهرست
 
 - [نصب](#نصب)
+- [داکر](#داکر)
 - [پیکربندی](#پیکربندی)
 - [مفاهیم](#مفاهیم)
 - [مرجع ابزارها](#مرجع-ابزارها)
@@ -40,8 +42,207 @@
 
 ## نصب
 
-برای اجرا، Node.js نسخهٔ ۱۸٫۱۷ یا بالاتر نصب باید داشته باشد. پس از نصب وابستگی‌ها، سرور را
-با دستورهای زیر اجرا کنید:
+برای اجرا، Node.js نسخهٔ ۱۸٫۱۷ یا بالاتر نصب باید داشته باشد.
+
+```bash
+npm install ganjoor-mcp-server
+```
+
+### VS Code
+
+برای نصب سرور Ganjoor MCP در فضای کاری VS Code، روی نشان زیر کلیک کنید. این کار به‌طور خودکار سرور را به
+پیکربندی `.vscode/mcp.json` شما اضافه می‌کند.
+
+[![Install in VS Code](https://img.shields.io/badge/Install_in-VS_Code-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=io.github.ehsanghaffar%2Fganjoor-mcp-server&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22ganjoor-mcp-server%22%5D%2C%22env%22%3A%7B%7D%7D)
+
+یا این را به `.vscode/mcp.json` اضافه کنید:
+
+```json
+{
+  "servers": {
+    "io.github.ehsanghaffar/ganjoor-mcp-server": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "ganjoor-mcp-server"
+      ],
+      "env": {}
+    }
+  }
+}
+```
+
+با CLI خود VS Code:
+
+```bash
+code --add-mcp '{\"name\":\"io.github.ehsanghaffar/ganjoor-mcp-server\",\"command\":\"npx\",\"args\":[\"-y\",\"ganjoor-mcp-server\"],\"env\":{}}'
+```
+
+### Claude Desktop / Cursor
+
+برای نصب سرور Ganjoor MCP در اپلیکیشن Claude Desktop یا Cursor، روی نشان زیر کلیک کنید. این کار به‌طور
+خودکار سرور را به پیکربندی MCP شما اضافه می‌کند.
+
+[![Install in Cursor](https://img.shields.io/badge/Install_in-Cursor-000000?style=flat-square&logoColor=white)](https://cursor.com/en/install-mcp?name=io.github.ehsanghaffar%2Fganjoor-mcp-server&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsImdhbmpvb3ItbWNwLXNlcnZlciJdLCJlbnYiOnt9fQ==)
+
+یا این را به فایل پیکربندی MCP خود اضافه کنید:
+
+```json
+{
+  "mcpServers": {
+    "io.github.ehsanghaffar/ganjoor-mcp-server": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "ganjoor-mcp-server"
+      ],
+      "env": {},
+      "type": "local",
+      "tools": [
+        "*"
+      ]
+    }
+  }
+}
+```
+
+### سایر کلاینت‌ها
+
+<details>
+<summary>Claude Code</summary>
+
+برای افزودن سرور MCP به‌نام io.github.ehsanghaffar/ganjoor-mcp-server از CLI رسمی Claude Code
+استفاده کنید:
+
+```bash
+claude mcp add io.github.ehsanghaffar/ganjoor-mcp-server npx -y ganjoor-mcp-server
+```
+</details>
+
+<details>
+<summary>Claude Desktop</summary>
+
+راهنمای نصب MCP را دنبال کنید و از پیکربندی استاندارد بالا استفاده کنید.
+[guide](https://modelcontextprotocol.io/quickstart/user)
+</details>
+
+<details>
+<summary>Codex</summary>
+
+فایل پیکربندی `~/.codex/config.toml` را بسازید یا ویرایش کنید و این موارد را به آن اضافه کنید:
+
+```toml
+[mcp_servers.io.github.ehsanghaffar/ganjoor-mcp-server]
+command = "npx"
+args = ["-y", "ganjoor-mcp-server"]
+```
+
+برای اطلاعات بیشتر، [مستندات MCP در Codex](https://github.com/openai/codex/blob/main/codex-rs/config.md#mcp_servers) را ببینید.
+</details>
+
+<details>
+<summary>Gemini CLI</summary>
+
+راهنمای نصب MCP را دنبال کنید و از پیکربندی استاندارد بالا استفاده کنید.
+[guide](https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md#configure-the-mcp-server-in-settingsjson)
+</details>
+
+<details>
+<summary>OpenCode</summary>
+
+[مستندات MCP Servers](https://opencode.ai/docs/mcp-servers/) را دنبال کنید. برای نمونه در
+`~/.config/opencode/opencode.json`:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "io.github.ehsanghaffar/ganjoor-mcp-server": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "ganjoor-mcp-server"
+      ],
+      "enabled": true
+    }
+  }
+}
+```
+</details>
+
+<details>
+<summary>GitHub Copilot CLI</summary>
+
+GitHub Copilot CLI هم از راه تعاملی و هم از راه فایل پیکربندی، سرورهای MCP را می‌پذیرد.
+
+#### گزینهٔ ۱: راه‌اندازی تعاملی با `/mcp add`
+
+1. GitHub Copilot CLI را در حالت تعاملی باز کنید.
+2. دستور `/mcp add` را اجرا کنید.
+3. مقدار **Server Name** را `io.github.ehsanghaffar/ganjoor-mcp-server` وارد کنید.
+4. مقدار **Server Type** را انتخاب کنید:
+   - `STDIO` برای سرورهای مبتنی بر فرمان
+   - `HTTP` برای سرورهای راه‌دور
+5. مقادیر فرمان یا نشانی را از پیکربندی استاندارد بالا پر کنید و **Tools** را روی `*` بگذارید.
+6. برای ذخیره، `Ctrl+S` را بزنید.
+
+#### گزینهٔ ۲: ویرایش `~/.copilot/mcp-config.json`
+
+```json
+{
+  "mcpServers": {
+    "io.github.ehsanghaffar/ganjoor-mcp-server": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "ganjoor-mcp-server"
+      ],
+      "env": {},
+      "type": "local",
+      "tools": [
+        "*"
+      ]
+    }
+  }
+}
+```
+
+برای اطلاعات بیشتر، [مستندات MCP در GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-mcp-servers) را ببینید.
+</details>
+
+<details>
+<summary>GitHub Copilot Coding Agent</summary>
+
+عامل کدنویسی Copilot می‌تواند از سرورهای MCP برای گسترش توانایی‌های خود استفاده کند. از پیکربندی زیر که
+مخصوص Coding Agent است استفاده کنید:
+
+```json
+{
+  "mcpServers": {
+    "io.github.ehsanghaffar/ganjoor-mcp-server": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "ganjoor-mcp-server"
+      ],
+      "env": {},
+      "type": "local",
+      "tools": [
+        "*"
+      ]
+    }
+  }
+}
+```
+
+این پیکربندی را در تنظیمات مخزن، زیر **Copilot > Coding agent** اضافه کنید. مقدار `"tools": ["*"]`
+همهٔ ابزارهای در دسترس سرور MCP را فعال می‌کند.
+
+برای اطلاعات بیشتر، [مستندات MCP در GitHub Copilot Coding Agent](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/extend-coding-agent-with-mcp) را ببینید.
+</details>
+
+### نصب از روی همین کد
 
 ```bash
 npm install
@@ -49,7 +250,7 @@ npm run build
 npm start            # انتقال stdio (پیش‌فرض)
 ```
 
-### VS Code
+#### VS Code
 
 به فایل `.vscode/mcp.json` اضافه کنید:
 
@@ -65,7 +266,7 @@ npm start            # انتقال stdio (پیش‌فرض)
 }
 ```
 
-### Claude Desktop / Cursor
+#### Claude Desktop / Cursor
 
 به فایل پیکربندی MCP خود اضافه کنید:
 
@@ -89,16 +290,60 @@ HTTP=true PORT=3000 npm start
 ```
 
 نقطهٔ پایانی MCP، `POST /mcp` است و `GET /health` وضعیت سرور و سرویس بالادستی را نمایش می‌دهد.
-این انتقال به‌صورت Stateless اجرا می‌شود و برای هر درخواست نمونه‌ای تازه از سرور می‌سازد؛ بنابراین برای
-بررسی و تجربهٔ کاربردی مناسب است، اما برای بارهای سنگین مناسب نیست. پیش‌فرضاً سرور روی `127.0.0.1`
-گوش می‌دهد و مقدار `Origin` را بررسی می‌کند تا از دریافت درخواست‌های rebinding مبتنی بر DNS جلوگیری کند.
-اگر نیاز به دسترسی از مبدأهای غیر محلی داشت، مقدارهای مجاز `Origin` را با کاما از طریق متغیر
-`ALLOWED_ORIGINS` مشخص کنید.
+این انتقال به‌صورت Stateless اجرا می‌شود و برای هر درخواست نمونه‌ای تازه از سرور می‌سازد؛ بنابراین
+به‌صورت افقی مقیاس‌پذیر است. پیش‌فرضاً سرور روی `127.0.0.1` گوش می‌دهد و مقدار `Origin` را بررسی
+می‌کند تا از دریافت درخواست‌های rebinding مبتنی بر DNS جلوگیری کند. اگر نیاز به دسترسی از مبدأهای غیر محلی
+داشت، مقدارهای مجاز `Origin` را با کاما از طریق متغیر `ALLOWED_ORIGINS` مشخص کنید.
 
 ### MCP Inspector
 
 ```bash
 npm run inspector
+```
+
+---
+
+## داکر
+
+یک `Dockerfile` چندمرحله‌ای و یک `docker-compose.yml` در مخزن هست. تصویر ساخته‌شده بر پایهٔ `node:22-alpine`
+است و تنها خروجی کامپایل‌شده و وابستگی‌های تولید را در بر دارد.
+
+```bash
+docker compose up --build
+```
+
+فایل compose سرور را در حالت **HTTP قابل‌جریان** روی `http://localhost:3000/mcp` اجرا می‌کند و
+`GET /health` وضعیت سرور و سرویس بالادستی را گزارش می‌دهد. مقدار `HOST` روی `0.0.0.0` تنظیم شده تا
+درگاه منتشرشده از میزبان در دسترس باشد. هر متغیر پیکربندیِ جدول زیر به‌صورت یک متغیر محیطی معمولی
+کار می‌کند. برای اجرای یک کانتینر بدون compose:
+
+```bash
+docker build -t ganjoor-mcp .
+docker run --rm -p 3000:3000 -e HTTP=true -e HOST=0.0.0.0 ganjoor-mcp
+```
+
+### انتقال stdio روی داکر
+
+کلاینت‌هایی که خودشان سرور را اجرا می‌کنند (به‌جای اتصال روی HTTP) می‌توانند از پروفایل `stdio` استفاده
+کنند؛ این پروفایل جریان پروتکل را روی stdin باز می‌کند و هیچ شنوندهٔ HTTP نمی‌سازد:
+
+```bash
+docker compose --profile stdio run --rm ganjoor-mcp-stdio
+```
+
+### با Claude Desktop
+
+برای اجرای سرور از راه داکر به‌جای نصب محلی Node:
+
+```json
+{
+  "mcpServers": {
+    "ganjoor": {
+      "command": "docker",
+      "args": ["run", "--rm", "-i", "ganjoor-mcp"]
+    }
+  }
+}
 ```
 
 ---
@@ -414,11 +659,3 @@ npx tsx tests/verify-evaluation.ts   # اجرای پرسش‌ها از طریق 
 ## مشارکت
 
 به [CONTRIBUTING.md](CONTRIBUTING.md) و [AGENTS.md](AGENTS.md) نگاه کنید.
-
----
-
-<div align="right">
-
-**فارسی** | [English](README.md)
-
-</div>
