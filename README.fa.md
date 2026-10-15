@@ -50,6 +50,8 @@ npm install ganjoor-mcp-server
 
 ### VS Code
 
+> نیازی به نصب پکیج npm نیست
+
 برای نصب سرور Ganjoor MCP در فضای کاری VS Code، روی نشان زیر کلیک کنید. این کار به‌طور خودکار سرور را به
 پیکربندی `.vscode/mcp.json` شما اضافه می‌کند.
 
@@ -60,7 +62,7 @@ npm install ganjoor-mcp-server
 ```json
 {
   "servers": {
-    "ganjoor-mcp-server": {
+    "io.github.ehsanghaffar/ganjoor-mcp-server": {
       "command": "npx",
       "args": [
         "-y",
@@ -90,7 +92,7 @@ code --add-mcp '{\"name\":\"ganjoor-mcp-server\",\"command\":\"npx\",\"args\":[\
 ```json
 {
   "mcpServers": {
-    "ganjoor-mcp-server": {
+    "io.github.ehsanghaffar/ganjoor-mcp-server": {
       "command": "npx",
       "args": [
         "-y",
@@ -115,7 +117,7 @@ code --add-mcp '{\"name\":\"ganjoor-mcp-server\",\"command\":\"npx\",\"args\":[\
 استفاده کنید:
 
 ```bash
-claude mcp add ganjoor-mcp-server npx -y ganjoor-mcp-server
+claude mcp add io.github.ehsanghaffar/ganjoor-mcp-server npx -y ganjoor-mcp-server
 ```
 </details>
 
@@ -157,7 +159,7 @@ args = ["-y", "ganjoor-mcp-server"]
 {
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
-    "ganjoor-mcp-server": {
+    "io.github.ehsanghaffar/ganjoor-mcp-server": {
       "type": "local",
       "command": [
         "npx",
@@ -192,7 +194,7 @@ GitHub Copilot CLI هم از راه تعاملی و هم از راه فایل پ
 ```json
 {
   "mcpServers": {
-    "ganjoor-mcp-server": {
+    "io.github.ehsanghaffar/ganjoor-mcp-server": {
       "command": "npx",
       "args": [
         "-y",
@@ -220,7 +222,7 @@ GitHub Copilot CLI هم از راه تعاملی و هم از راه فایل پ
 ```json
 {
   "mcpServers": {
-    "ganjoor-mcp-server": {
+    "io.github.ehsanghaffar/ganjoor-mcp-server": {
       "command": "npx",
       "args": [
         "-y",

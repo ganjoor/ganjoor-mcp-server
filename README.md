@@ -47,10 +47,12 @@ related-people and family-tree graphs.
 Requires Node.js 18.17 or newer.
 
 ```bash
-npm install ganjoor-mcp-server
+npm install ganjoor-mcp-server # for locally installed stdio transport. no need if using VS Code or Claude Desktop / Cursor.
 ```
 
 ### VS Code
+
+> No need install npm package — the MCP server runs in-process and is launched by VS Code when needed.
 
 Just click the badge below to install the Ganjoor MCP server in your VS Code workspace. It will
   automatically add the server to your `.vscode/mcp.json` config.
@@ -63,7 +65,7 @@ Or add to `.vscode/mcp.json`:
 ```json
 {
   "servers": {
-    "ganjoor-mcp-server": {
+    "io.github.ehsanghaffar/ganjoor-mcp-server": {
       "command": "npx",
       "args": [
         "-y",
@@ -92,7 +94,7 @@ Or add to your MCP config file:
 ```json
 {
   "mcpServers": {
-    "ganjoor-mcp-server": {
+    "io.github.ehsanghaffar/ganjoor-mcp-server": {
       "command": "npx",
       "args": [
         "-y",
@@ -155,7 +157,7 @@ Follow the MCP Servers [documentation](https://opencode.ai/docs/mcp-servers/). F
 {
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
-    "ganjoor-mcp-server": {
+    "io.github.ehsanghaffar/ganjoor-mcp-server": {
       "type": "local",
       "command": [
         "npx",
@@ -190,7 +192,7 @@ GitHub Copilot CLI supports adding MCP servers interactively and through a confi
 ```json
 {
   "mcpServers": {
-    "ganjoor-mcp-server": {
+    "io.github.ehsanghaffar/ganjoor-mcp-server": {
       "command": "npx",
       "args": [
         "-y",
