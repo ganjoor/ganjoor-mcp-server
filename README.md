@@ -5,6 +5,7 @@
 [![VERSION: 0.1.0](.github/assets/pills/version.svg)]([CHANGELOG.md](https://www.npmjs.com/package/ganjoor-mcp-server))
 [![PLATFORM: Node >=18.17](.github/assets/pills/platform.svg)](package.json)
 [![LICENSE: MIT](.github/assets/pills/license.svg)](LICENSE)
+[![Ganjoor on mcprush](https://mcprush.com/badge/ganjoor-mcp/score.svg)](https://mcprush.com/to/ganjoor-mcp?ref=badge)
 
 
 </div>
