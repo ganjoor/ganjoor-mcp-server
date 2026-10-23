@@ -1,0 +1,26 @@
+name: Publish MCP Server
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Publish to MCP Registry (NPM, stdio)
+        uses: OtherVibes/mcp-publish-action@v1
+        with:
+          name: io.github.ehsanghaffar/ganjoor-mcp-server
+          description: "Access to the Ganjoor archive of Persian classical poetry: poets, poems, metre and recitations"
+          version: "0.1.1"
+          registry_type: npm
+          identifier: ganjoor-mcp-server
+          transport_type: stdio
