@@ -28,3 +28,9 @@ releases, so unreleased work stays under `[Unreleased]` until the first tag is c
 - Added to the official MCP registry for public access
 - Added to the official MCP registry for public access
 - Documentation for the server and its usage with new registry features
+
+## [0.1.1] - 2026-10-23
+
+### Updated 
+
+- Update README.md
