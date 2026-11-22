@@ -159,6 +159,16 @@ export interface GanjoorPoemViewModel {
   coupletsCount?: number | null;
 }
 
+export interface GanjoorSemanticSearchResponse {
+  results: {
+    poemId: number;
+    title: string;
+    fullTitle: string;
+    fullUrl: string;
+    verses?: { text: string }[] | null;
+  }[];
+}
+
 export interface GanjoorVerse {
   id: number;
   vOrder: number;
