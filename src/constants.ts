@@ -2,9 +2,17 @@
  * Shared constants for the Ganjoor MCP server.
  */
 
+const PUBLIC_API_BASE_URL = "https://api.ganjoor.net";
+
 /** Base URL of the Ganjoor REST API. Override with GANJOOR_API_BASE_URL. */
 export const API_BASE_URL = (
-  process.env.GANJOOR_API_BASE_URL ?? "https://api.ganjoor.net"
+  process.env.GANJOOR_API_BASE_URL ?? PUBLIC_API_BASE_URL
+).replace(/\/+$/, "");
+
+/** Public semantic search runs on Ganjgah. Custom API deployments keep their own endpoint. */
+export const SEMANTIC_BASE_URL = (
+  process.env.GANJOOR_SEMANTIC_BASE_URL ??
+  (API_BASE_URL === PUBLIC_API_BASE_URL ? "https://ganjgah.ir" : API_BASE_URL)
 ).replace(/\/+$/, "");
 
 /** Public web front-end, used to build human-clickable links. */

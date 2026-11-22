@@ -22,7 +22,7 @@
     "start": "node dist/index.js",
     "start:http": "HTTP=true node dist/index.js",
     "typecheck": "tsc --noEmit",
-    "test": "tsx tests/smoke.test.ts",
+    "test": "tsx --test tests/semantic-search.test.ts && tsx tests/smoke.test.ts",
     "inspect": "tsx tests/inspect-output.ts",
     "inspector": "npx @modelcontextprotocol/inspector node dist/index.js",
     "clean": "rm -rf dist"

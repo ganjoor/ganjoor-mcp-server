@@ -38,8 +38,9 @@ export async function ganjoorPost<T>(
   endpoint: string,
   body: unknown,
   params: Record<string, QueryValue> = {},
+  baseUrl = API_BASE_URL,
 ): Promise<T> {
-  const url = buildUrl(endpoint, params);
+  const url = buildUrl(endpoint, params, baseUrl);
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
@@ -56,13 +57,13 @@ export async function ganjoorPost<T>(
     return await handleResponse<T>(response, endpoint);
   } catch (error) {
     if (error instanceof GanjoorApiError) throw error;
-    throw toTransportError(error, endpoint);
+    throw toTransportError(error, endpoint, baseUrl);
   } finally {
     clearTimeout(timeout);
   }
 }
 
-function buildUrl(endpoint: string, params: Record<string, QueryValue>): string {
+function buildUrl(endpoint: string, params: Record<string, QueryValue>, baseUrl = API_BASE_URL): string {
   const search = new URLSearchParams();
   for (const [key, value] of Object.entries(params)) {
     if (value === undefined || value === null || value === "") continue;
@@ -73,7 +74,7 @@ function buildUrl(endpoint: string, params: Record<string, QueryValue>): string 
     }
   }
   const query = search.toString();
-  return `${API_BASE_URL}${endpoint}${query ? `?${query}` : ""}`;
+  return `${baseUrl}${endpoint}${query ? `?${query}` : ""}`;
 }
 
 async function request<T>(url: string, endpoint: string): Promise<T> {
@@ -130,7 +131,7 @@ function buildErrorMessage(status: number, body: string, endpoint: string): stri
     case 404:
       return `Error: not found at ${endpoint}. Verify the id or URL slug — use ganjoor_list_poets or ganjoor_search_poems to find valid ones.`;
     case 429:
-      return "Error: rate limited by api.ganjoor.net. Wait a few seconds and retry, and reduce the request rate.";
+      return "Error: rate limited by the upstream API. Wait a few seconds and retry, and reduce the request rate.";
     default:
       if (status >= 500) {
         return `Error: Ganjoor API server error (${status}) for ${endpoint}.${detail ? ` ${detail}` : ""} This is usually an upstream bug — try a related endpoint or retry later.`;
@@ -165,7 +166,7 @@ function truncate(value: string, max: number): string {
   return value.length > max ? `${value.slice(0, max)}…` : value;
 }
 
-function toTransportError(error: unknown, endpoint: string): GanjoorApiError {
+function toTransportError(error: unknown, endpoint: string, baseUrl = API_BASE_URL): GanjoorApiError {
   if (error instanceof Error && error.name === "AbortError") {
     return new GanjoorApiError(
       `Error: request to ${endpoint} timed out after ${REQUEST_TIMEOUT_MS / 1000}s. Retry, or narrow the request with pagination parameters.`,
@@ -175,7 +176,7 @@ function toTransportError(error: unknown, endpoint: string): GanjoorApiError {
   }
   const message = error instanceof Error ? error.message : String(error);
   return new GanjoorApiError(
-    `Error: could not reach the Ganjoor API (${API_BASE_URL}) for ${endpoint}: ${message}. Check network connectivity and retry.`,
+    `Error: could not reach the Ganjoor API (${baseUrl}) for ${endpoint}: ${message}. Check network connectivity and retry.`,
     null,
     endpoint,
   );

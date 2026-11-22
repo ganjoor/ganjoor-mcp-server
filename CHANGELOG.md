@@ -21,6 +21,10 @@ releases, so unreleased work stays under `[Unreleased]` until the first tag is c
 - Basic API endpoints for handling MCP requests
 - Documentation for the server and its usage
 
+### Fixed
+
+- Route public semantic search to Ganjgah and render its verse excerpts. Custom Ganjoor deployments retain their existing routing.
+
 ## [0.1.0] - 2026-10-15
 
 ### Added

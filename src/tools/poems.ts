@@ -1,10 +1,11 @@
 import { z } from "zod";
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { ganjoorGet, ganjoorPost, fetchPaged, GanjoorApiError } from "../client.js";
+import { API_BASE_URL, SEMANTIC_BASE_URL } from "../constants.js";
 import { IdSchema, PaginationSchema, ResponseFormatSchema, UrlSlugSchema } from "../schemas.js";
 import { bullets, lines, md, siteUrl } from "../format.js";
 import { defineTool, READ_ONLY } from "./registry.js";
-import type { GanjoorPoemViewModel, GanjoorVerse } from "../types.js";
+import type { GanjoorPoemViewModel, GanjoorSemanticSearchResponse, GanjoorVerse } from "../types.js";
 
 function poemSummary(poem: GanjoorPoemViewModel) {
   return {
@@ -174,6 +175,7 @@ Args:
 
 Returns:
   For JSON: { count, results: [{ id, title, full_title, full_url, plain_text }] } ordered by relevance.
+  Public search returns excerpts. Use ganjoor_get_poem_by_id for the full poem.
 
 Examples:
   - "Poems about patience and divine trust" -> query='patience and trust in God'
@@ -224,18 +226,21 @@ Notes:
         cat_id: number;
       };
 
-      let results: GanjoorPoemViewModel[];
+      // Ganjgah interprets zero-valued scope IDs as filters. Keep the legacy request for a self-hosted API.
+      const noScope = SEMANTIC_BASE_URL === API_BASE_URL ? 0 : undefined;
+      let response: GanjoorPoemViewModel[] | GanjoorSemanticSearchResponse;
       try {
-        results = await ganjoorPost<GanjoorPoemViewModel[]>(
+        response = await ganjoorPost<GanjoorPoemViewModel[] | GanjoorSemanticSearchResponse>(
           "/api/ganjoor/search/semantic",
           {
             query: input.query,
             topK: input.top_k,
-            poetId: input.poet_id,
-            catId: input.cat_id,
+            poetId: input.poet_id || noScope,
+            catId: input.cat_id || noScope,
             disableScopeDetection: false,
           },
           {},
+          SEMANTIC_BASE_URL,
         );
       } catch (error) {
         if (error instanceof GanjoorApiError && error.status === 503) {
@@ -248,23 +253,33 @@ Notes:
         throw error;
       }
 
-      const list = Array.isArray(results) ? results.slice(0, input.top_k) : [];
+      const list = Array.isArray(response)
+        ? response.slice(0, input.top_k).map((poem) => ({
+            ...poemSummary(poem),
+            plain_text: poem.plainText,
+          }))
+        : (Array.isArray(response?.results) ? response.results : []).slice(0, input.top_k).map((poem) => ({
+            id: poem.poemId,
+            title: poem.title,
+            full_title: poem.fullTitle,
+            full_url: poem.fullUrl,
+            couplets_count: null,
+            language: null,
+            plain_text: poem.verses?.map((verse) => verse.text).join("\n") ?? "",
+          }));
 
       const data = {
         query: input.query,
         count: list.length,
-        results: list.map((poem) => ({
-          ...poemSummary(poem),
-          plain_text: poem.plainText,
-        })),
+        results: list,
       };
 
       const resultBlocks = list.map((poem, index) =>
         md(
-          `## ${index + 1}. ${poem.fullTitle}`,
-          `- **Id**: ${poem.id} · ${siteUrl(poem.fullUrl)}`,
+          `## ${index + 1}. ${poem.full_title}`,
+          `- **Id**: ${poem.id} · ${siteUrl(poem.full_url)}`,
           "",
-          poem.plainText,
+          poem.plain_text,
         ),
       );
 

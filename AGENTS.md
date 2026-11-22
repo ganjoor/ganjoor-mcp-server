@@ -11,7 +11,7 @@ This file provides guidance for using the `ganjoor-mcp-server` with Claude, an A
 ```bash
 npm run build       # compile to dist/ + chmod +x dist/index.js
 npm run typecheck   # tsc --noEmit (fast, no emit)
-npm test            # live smoke test against api.ganjoor.net (all 44 tools)
+npm test            # semantic routing regression test and live smoke tests (all 44 tools)
 npm run inspect     # print real tool output for review
 npm run clean       # rm -rf dist
 ```
@@ -21,7 +21,7 @@ Run a single test directly with `tsx`:
 tsx tests/smoke.test.ts
 ```
 
-Development uses `tsc --watch` (not `tsx`) for incremental compilation. Tests run against the **live** upstream API, not mocks.
+Development uses `tsc --watch` (not `tsx`) for incremental compilation. The semantic routing regression test mocks HTTP. The smoke suite uses the live upstream API.
 
 ## Architecture
 
@@ -62,12 +62,13 @@ Three nested levels: **Poet** → **Category** (book/section) → **Poem** → V
 ## Upstream Quirks
 
 - Two endpoints (`/poets`, `/rhythms`) ignore paging params — handled client-side in `fetchPaged()`.
-- Semantic search returns 503 when the embedding backend is disabled — surfaced as a clear error pointing to text search.
+- Public semantic search uses `ganjgah.ir` and returns verse excerpts. Custom deployments keep their configured API host by default. A 503 still points the caller to text search.
 - Rhyme analysis may return a bare string `"no sections"` instead of a structured object.
 - Some poem fields are `unknown`-typed in `types.ts` because the upstream API is inconsistent.
 
 ## Test Files
 
+- `tests/semantic-search.test.ts` — mocked HTTP regression test for semantic routing and response mapping
 - `tests/smoke.test.ts` — live integration test hitting all 44 tools
 - `tests/verify-evaluation.ts` — replays 10 evaluation questions through MCP tools
 - `tests/verify-shapes.ts` — response shape validation

@@ -355,6 +355,7 @@ All settings are environment variables; none are required.
 | `HOST` | `127.0.0.1` | HTTP bind address. |
 | `ALLOWED_ORIGINS` | *(empty)* | Extra allowed `Origin` values, comma-separated. |
 | `GANJOOR_API_BASE_URL` | `https://api.ganjoor.net` | Upstream API base URL — point at a local RMuseum instance for development. |
+| `GANJOOR_SEMANTIC_BASE_URL` | `https://ganjgah.ir` for the public API | Semantic search base URL. Custom API deployments use their configured API base unless this is set. |
 | `GANJOOR_SITE_BASE_URL` | `https://ganjoor.net` | Front-end base used to build clickable links. |
 
 ---
@@ -596,21 +597,21 @@ payloads, and the leading-slash requirement on URL parameters.
 ```bash
 npm run build       # compile to dist/
 npm run typecheck   # type-check without emitting
-npm test            # live smoke test against api.ganjoor.net
+npm test            # semantic routing regression test and live smoke tests
 npm run inspect     # print real tool output for review
 npm run clean
 ```
 
-`npm test` boots the server over an in-memory transport, asserts every tool has a substantial
-description, and invokes all 44 tools against the live API, failing on any error response.
+`npm test` first verifies semantic routing with mocked HTTP responses. The smoke suite then boots the
+server over an in-memory transport, checks tool descriptions, and calls all 44 tools against the live API.
 
 ---
 
 ## Known limitations
 
-- **Semantic search may be disabled.** Ganjoor's embedding backend is optional; when a deployment has
-  it turned off, `ganjoor_semantic_search_poems` returns a 503. The tool surfaces a clear message and
-  points you at `ganjoor_search_poems` with a Persian keyword instead.
+- **Semantic search returns excerpts on the public deployment.** Ganjgah supplies verse excerpts with
+  search hits. Use `ganjoor_get_poem_by_id` to read the complete poem. A deployment with semantic search
+  disabled returns 503, and the tool suggests `ganjoor_search_poems` with a Persian keyword.
 - **Redirect resolution is sparse.** Ganjoor only stores redirects for paths it actually renamed, so
   most valid URLs return `has_redirect: false` rather than a target.
 - **Some tools always need authentication.** Endpoints behind a Ganjoor account (bookmarks, posting
